@@ -1,0 +1,46 @@
+    <div class="qtask">
+        <div class="qtask_question">
+            <span class="qtask_no">Question #10:</span>
+            <span class="qtask_quest"><a href="#" onclick="document.getElementById('id_query').value = this.innerHTML" id="id_a_query">When and where did the eggs with a toy appeared first time?</a></span>
+                <!--div style="float:right">
+                    <div class="timer">
+                        <span id="timer_seconds" class="timer_seconds">170</span>
+                    </div>
+                </div-->
+            <div style="clear:both"></div>
+        </div>
+        <div class="qtask_query">
+            <form action="/game/0/query" target="_blank">
+                <input type="text" class="vTextField qtask_query_input" name="query" id="id_query" />
+                <select name="search_engine" id="search_engine">
+                    <option value="google" selected>Google</option>
+                    <option value="yahoo" >Yahoo</option>
+                    <option value="bing" >Bing</option>
+                </select>
+                <input type="hidden" name="p" value="000000" />
+                <input type="hidden" name="qto" value="1" />
+                <input type="submit" name="search" value="Search">
+                <div class="search_comment">Please, find information using our search field! (not browser "location" bar or search toolbar).
+                <br>You should browse pages through our proxy (http://ir-ub.mathcs.emory.edu:8100/http/www...) during the search.
+                </div>
+            </form>
+        </div>
+        <div class="qtask_answer">
+            <form action="#" method="post" id="id_answer_form">
+                <div class="form-row answer">
+                    <label for="id_answer" class="left">Answer:</label>
+                    <input type="text" name="answer" class="vTextField required" id="id_answer"/>
+                </div>
+
+                <div class="form-row answer_url">
+                    <label for="id_answer_url" class="left">URL:</label>
+                    <input type="text" name="answer_url" class="vTextField required" id="id_answer_url"/>
+                </div>
+
+                <input type="hidden" name="p" value="000000" />
+                <input type="hidden" name="qto" value="1" />
+                <input type="submit" name="submit_answer" value="Submit answer">
+                <input type="submit" name="skip_question" value="No answer, go to next question">
+            </form>
+        </div>
+    </div>

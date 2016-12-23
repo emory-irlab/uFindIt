@@ -1,0 +1,7 @@
+#!/usr/local/bin/perl -w 
+use CGI; # load CGI routines
+use Encode;
+#use Unicode::String;
+use strict;
+
+print "<script>alert('aaaaa');</script>"

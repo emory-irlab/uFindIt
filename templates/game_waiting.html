@@ -1,0 +1,21 @@
+<div class="timer">
+  <span id="timer_seconds" class="timer_seconds"></span>
+</div>
+<script>
+    var time_to_start = {{ time_to_start }}; // only one outer parameter 
+    var load_time = new Date().getTime();
+    var timer = setInterval("update_timer_seconds()", 1000);
+
+    function update_timer_seconds() {
+        var rest = time_to_start - (new Date().getTime() - load_time) / 1000;
+        if (rest <= 0) {
+            clearInterval(timer);
+            document.location.reload(true);
+        } else {
+            var seconds_remain = "" + Math.floor(rest);
+            document.getElementById("timer_seconds").innerHTML = seconds_remain;
+            document.title = seconds_remain + " seconds remain"; 
+        }
+    }
+    update_timer_seconds();
+</script>

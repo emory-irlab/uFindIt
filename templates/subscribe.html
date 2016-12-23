@@ -1,0 +1,31 @@
+{% extends "base.html" %} 
+{% block title %}Subscribe to {% endblock %}
+{% block body %}
+<div class="subscribe">
+{% if pmessage|length > 0 %}<h1 class="message">{{ pmessage }}</h1>{% endif %}
+<h1 style="margin-bottom:30px;">Subscribe to Query Answering Game "{{ game }}"</h1>
+
+<form action="subscribe" method="post" id="id_subscribe_form">
+<div>
+  <fieldset class="module aligned">
+     <div class="form-row email"><div>
+            <label for="id_email" class="required email">Email:</label>
+                <input name="email" value="" class="vTextField email required" maxlength="75" type="text" id="id_email" />
+     </div></div>
+
+     <div class="form-row name"><div>
+            <label for="id_name" class="required">Name:</label>
+                <input name="name" value="" class="vTextField required" maxlength="50" type="text" id="id_name" />
+     </div></div>
+  </fieldset>
+  <input type="submit" value="Submit" name="_submit" style='background-image: url("/media/img/admin/default-bg-reverse.gif"); background-position: center top;'/>
+</div>
+</form>
+</div>
+<script>
+    $(document).ready(function(){
+        $("#id_subscribe_form").validate();
+        $('#id_email').focus();
+    });
+</script>
+{% endblock %}

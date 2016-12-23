@@ -1,0 +1,11 @@
+{% extends "base.html" %} 
+{% block title %}Subscribe to {% endblock %}
+{% block extrahead %}
+    <script type="text/javascript" src="/media/js/jquery.min.js"></script>
+{% endblock %}
+{% block body %}
+<h1 class="message">{{ message }}</h1>
+<h1>Subscribe to Query Answering Game "{{ game }}"</h1>
+
+We have sent you an email with a game address.
+{% endblock %}

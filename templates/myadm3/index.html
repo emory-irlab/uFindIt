@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>Summary of users</h1>
+
+<div style="text-align:left">
+
+<p style="color:#800000">{{ message|safe }}</p>    
+
+<form action="" method="GET">
+    db prefix: <input type="text" name="prefix" value="{{ prefix }}">
+    <p></p>
+
+    {{ html|safe }}
+
+    <p></p>
+    <input type="submit" name="submit" value="submit">
+</form>
+</div>
+{% endblock %}

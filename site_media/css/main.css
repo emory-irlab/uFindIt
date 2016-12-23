@@ -1,0 +1,146 @@
+body {
+    padding: 10px;
+    text-align:center;
+    font-size: 16px;
+}
+
+li, dt, dd {
+    font-size: 16px;
+    line-height: 18px;
+}
+
+h1 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.qtask {
+    text-align:left;
+    width:80%;
+    margin: 30px auto 30px auto;
+    padding:10px;
+    font: medium Arial;
+    /*border: 1px solid black;*/
+    background-color: #B0E0E6;
+}
+
+.qtask_quest a {
+    color:#000066;
+}
+
+.qtask_quest a:hover {
+    color:#0000CC;
+}
+
+.qtask_query {
+    margin-top:3px;
+    padding: 3px 0px 3px 79px;
+    background-color: #E6E6FA;
+}
+
+input#id_query {
+    width:75%
+}
+
+.search_comment {
+    font:italic small Arial;
+}
+
+.qtask_answer {
+    padding-left: 6px;
+    background-color: #98FB98;
+}
+
+.qtask_answer label.left {
+    width:70px;
+    display: inline-block;
+}
+
+label.error {
+    color:red;
+    font-weight:bold;
+    white-space: nowrap;
+}
+
+input#id_answer, input#id_answer_url {
+    width:85%;
+}
+
+div.answer, div.answer_url {
+    margin: 3px 0 3px 0;
+    padding:0;
+    border:0;
+}
+
+div.timer {
+    /*float: right;*/
+    padding: 3px 10px 3px 10px;
+    /*background-color: yellow;*/
+    color: red;
+    border: 3px dotted gray;
+    text-align: center;
+    font: bold large Arial;
+    background-color: #FFFF99;
+    width: 50px;
+    margin: 0 auto 0 auto;
+}
+
+.subscribe {
+    text-align:left;
+    margin: auto;
+}
+
+input.button_start_new_game {
+    font: bold 18px Arial;
+    padding:0px 50px 0px 50px;
+    height:31px;
+    background-image: url("/media/img/admin/default-bg-reverse.gif");
+    background-position: center top;
+    #background-color: lightblue;
+}
+
+/*div.timer {
+    margin: 10px;
+    width: 50px;
+    height: 26px;
+    padding: 22px 10px 22px 10px;
+    text-align: center;
+    background-color: #BBD4E4;
+    font: 20px Arial;
+}
+*/
+
+table.sqltable {
+    border-collapse: collapse;
+    border-color: #ccc;
+}
+
+table.sqltable thead td {
+    font-size: 10px;
+    line-height: 13px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    text-align: left;
+    padding: 2px;
+    font-family: "Lucida Grande", Verdana, Arial, sans-serif;
+    font-weight:bold;
+    background-color:lightgray;
+}
+
+table.sqltable tbody td {
+    font-size: 11px;
+    line-height: 13px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    text-align: left;
+    padding: 2px;
+    font-family: "Lucida Grande", Verdana, Arial, sans-serif;
+}
+
+table.sqltable td.td_mod_0 {
+    border-bottom: 1px solid #ccc;
+}
+
+table.sqltable td.td_rownum {
+    color: #666666;
+}

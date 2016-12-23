@@ -1,0 +1,11 @@
+Dear {{ player.name }},
+
+Welcome to the uFindIt contest, designed to test your web-searching smarts!
+
+This message verifies your email address. To verify and begin your game, please click (or copy/paste) your personalized link below into your Web browser:
+
+http://{{ host }}/game/{{ game.id }}/?p={{ player.idkey }}
+
+This contest is organized by the Emory University's IR Lab. You can find more information about the contest at http://{{ host }}/, including the rules and the contact information for any additional questions you may have.
+
+Good luck!

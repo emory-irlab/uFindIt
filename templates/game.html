@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>{{ game.name }}</h1>
+
+<!--p><a href="/">See the Rules</a-->
+
+{% if state == 'game not started' %}
+    <p>The game will start at {{ game.start_time }}
+    {% include "game_waiting.html" %}
+{% endif %}
+{% if state == 'game finished' %}
+    <h2>The game is finished.</h2>
+    <h2>Thank you for participation!</h2>
+
+    {% if player.mturk_worker_id %}
+        <div id="mturkSubmitForm" style="margin-top:30px; margin-bottom:30px">
+        <form action="/mturk/task_finished" name="mturk_task_finished_form" method="POST">
+            <label for="id_comment">Please, provide your feedback here</label><br>
+            <textarea rows="6" cols="80" name="comment" id="id_comment"></textarea>
+            <input type="hidden" name="p" value="{{ player.idkey }}">
+            <input type="hidden" name="game_id" value="{{ game.id }}">
+            <br>
+            <a href="javascript: document.mturk_task_finished_form.submit()">
+                <img border="0" alt="Submit from within the iframe" src="http://www.mturk.com/images/submit_hit.gif">
+            </a>
+            <!--input type="submit" name="sb" value="submit HIT"-->
+        </form>
+        </div>
+    {% endif %}
+
+{% endif %}
+{% if state == 'wait next query' %}
+    <p>Your answer is accepted. Next query will appear soon.
+    {% include "game_waiting.html" %}
+{% endif %}
+{% if state == 'ask_to_start_game' %}
+    <div id="id_div_test_cookie" style="background-color:#FF0066; font:bold 24px Arial; display:none;">Your browser must support cookies.</div>
+    <script>
+        var ret_test_cookie = $.ajax({
+            url:"/test_cookie",
+            success: function(data) {
+                if (data.indexOf("False") >= 0) {
+                    $('#id_div_test_cookie').css("display", "block");
+                    $('#id_form_start_game').css("display", "none");
+                }
+              }
+            });
+    </script>
+
+  <form action="/mturk/mturk_captcha" method="POST" id="id_form_start_game">
+    <center>
+        <script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LeQo78SAAAAAHJ4b_Ps3_qVv6OfjY5Hab_2cqVH{{ captcha_error }}"></script>
+    </center>
+    <noscript>
+        You should have enabled javascript in your browser
+    </noscript>
+
+      <input type="hidden" name="p" value="{{ player.idkey }}">
+      <input type="hidden" name="game_id" value="{{ game.id }}">
+    <p></p>
+    <input type="submit" value="Start new game" class="button_start_new_game"/>
+  </form>
+{% endif %}
+{% if state == 'playing' %}
+
+<div class="qtask">
+    <div class="qtask_question">
+        <span class="qtask_no">Question #{{ question_order }}:</span>
+        <span class="qtask_quest"><a href="#" onclick="document.getElementById('id_query').value = this.innerHTML" id="id_a_query">{{ qtask.query_task.query }}</a></span>
+        {% if game.game_time_limit > 0 or game.query_time_limit > 0 %}
+            <div style="float:right">
+                {% include "game_waiting.html" %}
+            </div>
+        {% endif %}
+        <div style="clear:both"></div>
+    </div>
+    <div class="qtask_query">
+        <form action="query" target="_blank">
+            <input type="text" class="vTextField qtask_query_input" name="query" id="id_query" />
+            <select name="search_engine" id="search_engine">
+                <option value="google" {% if search_engine == 'google' %}selected{% endif %}>Google</option>
+                <option value="yahoo" {% if search_engine == 'yahoo' %}selected{% endif %}>Yahoo</option>
+                <option value="bing" {% if search_engine == 'bing' %}selected{% endif %}>Bing</option>
+            </select>
+            <input type="hidden" name="p" value="{{ player.idkey }}" />
+            <input type="submit" name="search" value="Search">
+            <div class="search_comment">Please, find information using our search field! (not browser "location" bar or search toolbar).
+            <br>You should browse pages through our proxy (http://ir-ub.mathcs.emory.edu:8100/http/www...) during the search.                
+            </div>
+        </form>
+    </div>
+    <div class="qtask_answer">
+        <form action="answer" method="post" id="id_answer_form">
+            <div class="form-row answer">
+                <label for="id_answer" class="left">Answer:</label>
+                <input type="text" name="answer" class="vTextField required" id="id_answer"/>
+            </div>
+
+            <div class="form-row answer_url">
+                <label for="id_answer_url" class="left">URL:</label>
+                <input type="text" name="answer_url" class="vTextField required" id="id_answer_url"/>
+            </div>
+
+            <input type="hidden" name="p" value="{{ player.idkey }}" />
+            <input type="hidden" name="qto" value="{{ qtask.order }}" />
+            <input type="hidden" name="question_order" value="{{ question_order }}" />
+            <input type="submit" name="submit_answer" value="Submit answer">
+            <input type="button" name="skip_question" value="No answer, go to next question" onclick="answer.value='no answer'; answer_url.value='no answer'; submit();">
+        </form>
+        <script>
+            $(document).ready(function(){
+                $("#id_answer_form").validate();
+                $('#id_query').focus();
+            });
+        </script>
+    </div>
+</div>
+
+<img src="fake_image_current_query_{{ question_order }}_{{ qtask.order }}.jpg?quest={{ qtask.query_task.query|escape }}" width="1" height="1"/>
+
+{% endif %}
+
+<hr style="margin-top: 30px"/>
+{% if player.g_game_id %}
+  {% include "rules_game_g.html" %}
+{% else %}
+  {% include "rules_game.html" %}
+{% endif %}
+
+
+<p style="margin-top:30px"><i>You are logged-in as {{ player.name }}</i></p>
+{% endblock %}

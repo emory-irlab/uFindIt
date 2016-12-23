@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>http proxy - The U-Find-It contest</title>
+    <link rel="stylesheet" type="text/css" href="/media/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="/media/css/forms.css" />
+    <link rel="stylesheet" type="text/css" href="/site_media/css/main.css" />
+</head>
+<body>
+<center>
+<h1>Enter your url to go through the proxy</h1>
+    <div class="qtask_query">
+        <form onsubmit="document.location.href = '/http/' + document.getElementById('id_url').value.replace('http://', ''); return false">
+            <input type="text" class="vTextField qtask_query_input" name="url" id="id_url" />
+            <input type="submit" name="go" value="Go">
+        </form>
+    </div>
+</center>
+</body>
+</html>

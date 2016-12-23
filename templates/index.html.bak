@@ -1,0 +1,81 @@
+{% extends "base.html" %} 
+{% block body %}
+<center>
+<h1> Test your web-searching smarts! </h1>
+
+<h1> Earn great prizes and contribute to science by figuring out how to find
+information on the Web by cleverly using web search!</h1>
+
+<h1><a href="game/3/subscribe">Start playing now!</a></h1>
+</center>
+
+<div style="text-align:left">
+<h2> Contest overview and Basic Rules </h2>
+
+<p>The rules are simple: the participants compete on finding information on the
+web, by using their search skills, general knowledge, and quick thinking. An
+interface to a major web-search engine is provided, which should be used for
+all searching.  
+
+<p>A game consists of 10-20 questions, with a specified time limit  either for
+the whole game or for each question. For each correct answer you get 1
+point. The answer must consist of two parts: 
+
+<ul>
+  <li>The <b>answer</b> text (usually a few words only)
+  <li>One or more links to the <b>supporting pages</b> that should
+explicitly contain this information.
+</ul>
+
+<p>An answer is considered correct if there is a web page containing your
+answer, and you provided its URL. 
+
+<p>An answer is considered incorrect if:
+<ul>
+  <li>One of the fields above is missing
+  <li>The provided page does not contain the answer
+  <li>The answer is too vague or does not address the question directly
+  <li>The web page is manipulated by the participant (manually or
+automatically), to contain the answer.
+  <li>The answer was not found through our search interface (logs will
+be checked to confirm that our interface was used).
+</ul>
+
+<p>The answer correctness will be checked by multiple human judges, with final
+arbitration reserved by the contest organizers. 
+
+<p>For more details, see the <a href="rules.html">contest rules</a> here. 
+
+<h2> Who is organizing this and why </h2>
+
+<p>This contest is organized by the Emory University's IR Lab. The goal of this
+contest is to better understand how users search on the web for information
+of varying difficulty, which strategies are more successful than others, and
+how we could better help people find information on the web. To accomplish
+this, our contest interface will track the search queries issued, the
+documents clicked the amount of time a search takes, and other variables.
+The resulting data, not associated with any identifiable information about
+each player, may be shared with other IR researchers for scientific use. 
+
+<h2>Contact information and fine print</h2>
+
+<p>This contest is organized by the Emory University IR Lab as part of a
+research effort to study and improve web search quality. This research has
+been reviewed and approved by the Emory University IRB. If you have any
+questions or concerns about the contest or the research project, you may
+contact the principal investigator, Dr. Eugene Agichtein, at
+<a href="mailto:eugene@mathcs.emory.edu?subject=uFindIt contest">eugene@mathcs.emory.edu</a> by using email with the subject "uFindIt contest". 
+
+<p>For any other questions or concerns, you may contact the Emory IRB office:
+
+<p>1599 Clifton Road<br>
+5th Floor East<br>
+Atlanta, GA 30322<br>
+Telephone: (404) 712-0720<br>
+Toll Free: (877) 503-9797<br>
+Fax: (404) 727-1358<br>
+Email: <a href="mailto:IRB@emory.edu">IRB@emory.edu</a><br>
+
+Website: <a href="http://www.irb.emory.edu/">http://www.irb.emory.edu/</a>
+</div>
+{% endblock %}

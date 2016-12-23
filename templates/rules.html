@@ -1,0 +1,28 @@
+{% extends "base.html" %} 
+{% block body %}
+<h1>Contest rules</h1>
+
+<div style="text-align:left">
+<p>The contest consists of multiple <i>games</i>, with participants scoring the most points, moving on to the next round.
+
+<p>A game consists of 10-20 questions, with a specified time limit  either for the whole game or for each question. For each correct answer you get 1 point. The answer must consist of two parts:
+<ul>
+  <li>The <b>answer</b> text (usually a few words only)
+  <li>One or more links to the <b>supporting pages</b> that should explicitly contain this information.
+</ul>
+
+<p>An answer is considered correct if there is a web page containing your answer, and you provided its URL.
+
+<p>An answer is considered incorrect if:
+
+<ul>
+  <li>One of the fields above is missing
+  <li>The provided page does not contain the answer
+  <li>The answer is too vague or does not address the question directly
+  <li>The web page is manipulated by the participant (manually or automatically), to contain the answer.
+  <li>The answer was not found through our search interface (logs will be checked to confirm that our interface was used).
+</ul>
+
+<p>The answer correctness will be checked by multiple human judges, with final arbitration reserved by the contest organizers.
+</div>
+{% endblock %}

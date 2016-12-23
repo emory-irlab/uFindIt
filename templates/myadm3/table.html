@@ -1,0 +1,28 @@
+{% if error_message %}
+<p style="color:#C00000"><pre>{{ error_message|safe }}</pre></p>
+{% else %}
+<table border="1" cellpadding="0" cellspacing="0" class="sqltable sqltable_{{ sqlname }}">
+    <thead>
+        <td class="td_rownum">#</td>
+    {% for name, type_code, display_size, internal_size, precision, scale, null_ok in cur.description %}
+        <td>{{ name }}</td>
+    {% endfor %}
+    </thead>
+    <tbody>
+    {% for row in cur %}
+        <tr>
+            <td class="td_rownum">{{ forloop.counter }}</td>
+            {% for cell in row %}
+
+                {% if cur.description.2.0 == "player_key" %}
+                    <td style="background-color:red">{{ cell }}</td>
+                {% else %}
+                    <td>{{ cell }}</td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+        <td>{{ name }}</td>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
